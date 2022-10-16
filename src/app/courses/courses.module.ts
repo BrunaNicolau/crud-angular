@@ -7,6 +7,7 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { CoursesService } from './service/service.service';
 import { SharedModule } from '../shared/shared.module';
 import { CoursesFormComponent } from './courses-form/courses-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CoursesFormComponent } from './courses-form/courses-form.component';
     CommonModule,
     CoursesRoutingModule,
     AppMaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     CoursesService
