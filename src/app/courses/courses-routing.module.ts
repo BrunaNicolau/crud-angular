@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoursesFormComponent } from './courses-form/courses-form.component';
-import { CoursesComponent } from './courses/courses.component';
+import { CoursesFormComponent } from './container/courses-form/courses-form.component';
+import { CoursesComponent } from './container/courses/courses.component';
+import { CourseResolver } from './guards/course.resolver';
+// import { CourseResolver } from './guards/course.resolver';
 
 const routes: Routes = [
   { path: '', component: CoursesComponent },
-  { path: 'new', component: CoursesFormComponent }
+  { path: 'new', component: CoursesFormComponent, resolve: { course: CourseResolver } },
+  { path: 'edit/:id', component: CoursesFormComponent, resolve: { course: CourseResolver } }
 ];
 
 @NgModule({

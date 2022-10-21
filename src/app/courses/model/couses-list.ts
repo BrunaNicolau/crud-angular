@@ -1,5 +1,5 @@
-export interface CousesList {
-  _id: string;
-  name: string;
-  category: string;
+export interface CoursesList {
+  _id: any;
+  name: any;
+  category: any;
 }

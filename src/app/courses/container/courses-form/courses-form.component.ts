@@ -2,7 +2,10 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CoursesService } from '../service/service.service';
+import { ActivatedRoute } from '@angular/router';
+import { CoursesList } from '../../model/couses-list';
+import { CoursesService } from '../../service/service.service';
+
 
 @Component({
   selector: 'app-courses-form',
@@ -11,23 +14,27 @@ import { CoursesService } from '../service/service.service';
 })
 export class CoursesFormComponent implements OnInit {
 
-  form: FormGroup;
+  form = this.formBuilder.group({
+    _id: [''],
+    name: [''],
+    category: ['']
+  });
 
   constructor(
     private formBuilder: FormBuilder,
     private service: CoursesService,
     private snackBar: MatSnackBar,
-    private location: Location
-  ) {
-    this.form = this.formBuilder.group({
-      name: [null],
-      category: [null],
-
-    });
-  }
+    private location: Location,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-
+    const course: CoursesList = this.route.snapshot.data['course'];
+    this.form.setValue({
+      _id: course._id,
+      name: course.name,
+      category: course.category
+    });
   }
 
   onSubmit() {
