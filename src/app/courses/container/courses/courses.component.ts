@@ -53,17 +53,17 @@ export class CoursesComponent {
   }
 
   onRemove(course: CoursesList) {
-    // this.coursesService.remove(course._id).subscribe(
-    //   () => {
-    //     this.refresh();
-    //     this.snackBar.open('Curso removido com sucesso!', 'X', {
-    //       duration: 5000,
-    //       verticalPosition: 'top',
-    //       horizontalPosition: 'center'
-    //     });
-    //   },
-    //   () => this.onError('Erro ao tentar remover curso.')
-    // );
+    this.coursesService.remove(course._id).subscribe(
+      () => {
+        this.refresh();
+        this.snackBar.open('Curso removido com sucesso!', 'X', {
+          duration: 5000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+      },
+      () => this.onError('Erro ao tentar remover curso.')
+    );
   }
 
 }
